@@ -1,4 +1,11 @@
-import { Box, Button, Flex, useColorMode } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Link,
+  useColorMode,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
 import React from "react";
@@ -15,12 +22,18 @@ export const Navbar = () => {
     <Flex
       flexDirection="row"
       justifyContent="space-between"
+      alignItems="center"
       width="100%"
       as="nav"
       px="16"
       py="4"
+      mb="4"
     >
-      <DarkModeSwitch />
+      {/* <Link href="/"> */}
+      <Heading as="h3" size="lg">
+        &#60;Diresh /&#62;{" "}
+      </Heading>
+      {/* </Link> */}
       <Box>
         <NextLink href="/" passHref>
           <Button
@@ -29,25 +42,12 @@ export const Navbar = () => {
             p={[1, 2, 4]}
             _hover={{ backgroundColor: navHoverBg[colorMode] }}
             backgroundColor={
-              router.pathname.includes("/") ? navHoverBg[colorMode] : null
+              router.pathname === "/" ? navHoverBg[colorMode] : null
             }
             aria-label="Home"
+            mr="2"
           >
             Home
-          </Button>
-        </NextLink>
-        <NextLink href="/about" passHref>
-          <Button
-            as="a"
-            variant="ghost"
-            p={[1, 2, 4]}
-            _hover={{ backgroundColor: navHoverBg[colorMode] }}
-            backgroundColor={
-              router.pathname.includes("/about") ? navHoverBg[colorMode] : null
-            }
-            aria-label="About"
-          >
-            About
           </Button>
         </NextLink>
         <NextLink href="/projects" passHref>
@@ -62,6 +62,7 @@ export const Navbar = () => {
                 : null
             }
             aria-label="Projects"
+            mr="2"
           >
             Projects
           </Button>
@@ -76,10 +77,12 @@ export const Navbar = () => {
               router.pathname.includes("/blogs") ? navHoverBg[colorMode] : null
             }
             aria-label="Blogs"
+            mr="2"
           >
             Blogs
           </Button>
         </NextLink>
+        <DarkModeSwitch />
       </Box>
     </Flex>
   );

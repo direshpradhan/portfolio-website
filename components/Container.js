@@ -15,7 +15,7 @@ const Container = ({ children }) => {
         <Flex
           flexDirection="column"
           justifyContent="flex-start"
-          alignItems="flex-start"
+          alignItems="center"
         >
           {children}
         </Flex>
